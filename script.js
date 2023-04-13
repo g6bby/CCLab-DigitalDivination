@@ -1,44 +1,76 @@
-let btn = document.querySelector('button')
-let city; 
+var CLIENTID = "zYFO6EyLtFsprWQ5nZrh1wL7KHJNYPmgRlRGJCXsxI6RDwg7H2eL1V53ken8OwvC";
+var CLIENTSECRET = "YqIfownJ_i9NOSHvMzswkuslMHUn2c8EWJRo910EnqkgUb1Gsm07-Vq3c2FNS0rd5kAnouBLngHqho9vreQiaw";
+var accessToken= "?access_token=IpGIz8qv61T0FSAgtYXEsAPAkIFlqEJP5O_dNgZBeKM6Wdn6BgEpxKXs8u8ecsLJ";
+var API = "https://api.genius.com/search";
+var APISong = "https://api.genius.com/songs/";
+var songID = "2471960";
+var maxSong= 2471960; 
+//Max song is 489579 for a fairly safe number. But 2 million songs 
 
-const api_key = "1bbb153dea7974689b46fceeadc9bff5"
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ */
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-
-var choice = document.getElementById("choice");
-choice.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    btn.click();
-  }
-});
-
-
-btn.addEventListener('click', ()=> {
-    let form = document.getElementById("form")
-    city = form.elements[0].value
-    getWeather(city); 
-
-    async function getWeather(city) {
-    let api_url = "https://api.openweathermap.org/data/2.5/weather?q=" +city+"&appid=" + api_key+"&units=imperial";
-    
-      // Making an API call (request)
-      // and getting the response back
-      const response = await fetch(api_url);
-    
-      // Parsing it to JSON format
-      const data = await response.json();
-      
-      console.log(data)
-      console.log(data.main.temp);
-      let temp = data.main.temp
-
-      if( temp <= 60){
-            emoji = "❄️"
-        } 
-     else {
-         emoji = "☀️"
+//https://api.genius.com/search?q=Kendrick%20Lamar
+var xhr = new XMLHttpRequest(); //XML HTTP Request
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200 || xhr.status === 304) {
+      // Success! Do stuff with data.
+      //console.log(xhr.responseText); 
     }
-      document.getElementById("result").textContent = "The temperature in " + city + " right now is " + temp + " " + emoji
-    }    
+  }
+};
+xhr.open("GET", APISong+songID+accessToken, false);
+//xhr.open("GET", API+accessToken+ '&q=Kendrick%20Lamar', false);
 
-})
+xhr.send(); 
+//console.log(xhr.status);
+//console.log(xhr.statusText);
+demo=xhr.response;
+
+var json = JSON.parse(demo);
+var song = json['response']['song'];
+
+
+function newRandomSong() {
+  songID =getRandomInt(1,maxSong);
+  randomSong();
+}
+
+function randomSong(){
+  xhr.open("GET", APISong+songID+accessToken, false);
+  xhr.send(); 
+  demo=xhr.response;
+  
+  while (xhr.status===404){ //Checks if the Random Song Exists
+      songID =getRandomInt(1,maxSong);
+      xhr.open("GET", APISong+songID+accessToken, false);
+      xhr.send(); 
+      demo=xhr.response;
+  }
+  
+  json = JSON.parse(demo);
+  song = json['response']['song'];
+  document.getElementById("songImage").innerHTML = "<img src=\""+song['song_art_image_url']+"\"alt=\"Some Awesome Album Art\" style=\"width:200px;height:200px;\">";
+  // I made these pixel values since I'd rather have overlap on a small screen than the image scaled too small 
+ 
+
+//document.getElementById("song").innerHTML = "SONG: <a href="+song['url']+" >"+song['title'].toUpperCase()+"</a>";
+document.getElementById("song").innerHTML = "SONG: <a target=\"_blank\" href="+song['url']+" >"+song['title'].toUpperCase()+"</a>";
+  
+document.getElementById("artist").innerHTML = "ARTIST: <a target=\"_blank\"  href="+song['primary_artist']['url']+">"+song['primary_artist']['name'].toUpperCase()+"</a>";
+document.getElementById("releaseDate").innerHTML = "RELEASE DATE: "+song['release_date'];
+}
+function tweetSong(){
+  window.open('https://twitter.com/intent/tweet?hashtags=songs&text=Found a cool song today. "'+song['title']+'" by '+song['primary_artist']['name']);
+
+}
+
+//GETTING STARTED // 
+$(document).ready(function() {
+  randomSong(); //Using this instead of newRandomSong, because I want to start with the same song every time 
+});
