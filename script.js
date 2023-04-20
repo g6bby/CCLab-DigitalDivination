@@ -6,6 +6,20 @@ var APISong = "https://api.genius.com/songs/";
 var songID = "2471960";
 var maxSong= 2471960;
 
+const angrySongs = ["466995", "5059654", "6114523", "135062"];
+const happySongs = ["57158", "90487", "5281715", "6578371"];
+const sadSongs = ["4186978", "382949", "3539284", "4334221", "506752", "2900257"];
+const calmSongs = ["69336", "4631315", "7008965"];
+const excitedSongs = ["62170", "90475", "193691", "134525", "1850"];
+const desperateSongs = ["5208409", "135016", "75171"];
+const regretSongs = ["8965212", "2236", "452"];
+const rebelSongs = ["49011", "8616823", "1806", "66719"];
+const groovySongs = ["30290", "30280", "3343", "16676"];
+const nostalgicSongs = ["725791", "5863030", "3295634", "75"];
+const revengeSongs = ["102297", "198963", "5212746"];
+const etherealSongs = ["3326970", "4902007", "6033804", "3328515"]; 
+const loveSongs = ["6518316", "5715", "58043", "4826645"];
+
 //var button = select('#submit');
 //button.mousePressed(newRandomSong);
 
@@ -59,57 +73,68 @@ function randomSong(){
       if (check === "angry" || check === "mad")
       { 
 
-        songID = "466995"
+        songID = `${angrySongs[Math.floor(Math.random() * angrySongs.length)]}`;
       }
       else if (check === "happy")
       {
 
 
-        songID = "57158";
+        songID = `${happySongs[Math.floor(Math.random() * happySongs.length)]}`;
       }
       if (check === "sad")
       {
 
-        songID = "4186978" 
+        songID = `${sadSongs[Math.floor(Math.random() * sadSongs.length)]}`;
       }
       if (check === "calm")
       {
 
-        songID = "69336"
+        songID = `${calmSongs[Math.floor(Math.random() * calmSongs.length)]}`;
       }
       if (check === "excited")
       {
 
-        songID = "3343"
+        songID = `${excitedSongs[Math.floor(Math.random() * excitedSongs.length)]}`;
       }
       if (check === "desperate")
       {
 
-        songID = "5208409"
+        songID = `${desperateSongs[Math.floor(Math.random() * desperateSongs.length)]}`;
       }
       if (check === "regretful"){
 
-        songID = "8965212"
+        songID = `${regretSongs[Math.floor(Math.random() * regretSongs.length)]}`;
       }
       if (check === "rebel")
       {
 
-        songID = "49011"
+        songID = `${rebelSongs[Math.floor(Math.random() * rebelSongs.length)]}`;
       }
       if (check === "groovy")
       {
 
-        songID = "30290"
+        songID = `${groovySongs[Math.floor(Math.random() * groovySongs.length)]}`;
       }
 
       if(check === "nostalgic")
       {
 
-        songID = "725791"
+        songID = `${nostalgicSongs[Math.floor(Math.random() * nostalgicSongs.length)]}`;
       }
       if(check === "revenge"){
 
-        songID = "102297"
+        songID = `${revengeSongs[Math.floor(Math.random() * revengeSongs.length)]}`;
+      }
+      if(check === "ethereal")
+      {
+
+        songID = `${etherealSongs[Math.floor(Math.random() * etherealSongs.length)]}`;
+
+      }
+      if(check === "lovestruck")
+      {
+
+        songID = `${loveSongs[Math.floor(Math.random() * loveSongs.length)]}`;
       }
 
   xhr.open("GET", APISong+songID+accessToken, false);
