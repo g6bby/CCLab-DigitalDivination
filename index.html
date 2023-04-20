@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Random Song (Genius API)</title>
+  <title>How does music make you feel?</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
 
@@ -23,15 +23,21 @@
 	<br><br><br>
 	<form id = "form">
 	  <label for="choice">ENTER AN EMOTION: </label>
-	  <input type="text" id="choice" name="choice">
 
-	  <button>Submit</button><br><br>
+
+	  <input type="text" id="choice" name="choice">
+    <button class="submit" onclick="randomSong()">Check</button>
+
+
+	  <!-- <button class="submit">Submit</button><br><br> -->
 
 	  <br><br>
 	</form>
 
 
-	<div id = "result"></div>
+	<div id = "result">
+          <!-- <button class="button" onclick="newRandomSong()"><span>Submit</span></button><br><br> -->
+  </div>
 </div>
 
   <div class="row text-center">
@@ -40,7 +46,7 @@
       <p id="song"></p>
       <p id="artist"></p>
       <p id="releaseDate"></p>
-      <!-- <button class="button" onclick="newRandomSong()"><span>NEW SONG</span></button> -->
+        <!-- <button class="button" onclick="newRandomSong()"><span>NEW SONG</span></button> -->
       <br>
        <!-- <button class="button tweet" onclick="tweetSong()"><span>TWEET SONG <i class="fa fa-twitter"></i></span></button> -->
       

@@ -4,7 +4,13 @@ var accessToken= "?access_token=IpGIz8qv61T0FSAgtYXEsAPAkIFlqEJP5O_dNgZBeKM6Wdn6
 var API = "https://api.genius.com/search";
 var APISong = "https://api.genius.com/songs/";
 var songID = "2471960";
-var maxSong= 2471960; 
+var maxSong= 2471960;
+
+//var button = select('#submit');
+//button.mousePressed(newRandomSong);
+
+
+
 //Max song is 489579 for a fairly safe number. But 2 million songs 
 
 /**
@@ -42,6 +48,26 @@ function newRandomSong() {
 }
 
 function randomSong(){
+  document.getElementById("form").addEventListener("submit", function(event) {
+    // Prevent form submission
+  })
+    event.preventDefault();
+  var check = document.getElementById("choice").value;
+  var check2 = document.getElementById("choice").value;
+
+      //var val1 = "angry";
+      //check will be true or false
+      if (check === "angry")
+      { 
+
+        songID = "466995"
+      }
+      else if (check2 === "happy"){
+
+
+        songID = "57158";
+      }
+
   xhr.open("GET", APISong+songID+accessToken, false);
   xhr.send(); 
   demo=xhr.response;
@@ -69,6 +95,21 @@ function tweetSong(){
   window.open('https://twitter.com/intent/tweet?hashtags=songs&text=Found a cool song today. "'+song['title']+'" by '+song['primary_artist']['name']);
 
 }
+
+
+//specific songs
+function checkInput(){
+      var check = document.getElementById("choice").textContent = "angry";
+      //var val1 = "angry";
+      //check will be true or false
+      if (check)
+      { 
+        songID = "466995"
+      }
+      if (!check){
+        songID = "466996";
+      }
+    }
 
 //GETTING STARTED // 
 $(document).ready(function() {
