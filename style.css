@@ -60,6 +60,29 @@ body {
 	  background-color: RGB(255, 20, 100);
   }
 
-  .emotion{
-	font-size: 200%
+  .emotion label{
+	font-size: 200%;
+	float: center; width: 50%;
+	
+
+
   }
+
+  .emotionlist{
+	/* margin-right: 65%; */
+	/* margin-left: 40%; */
+	text-align: center;
+
+
+  }
+  .emotionlist h1{
+	font-size:150%;
+
+  }
+
+  .emotionlist p{
+	font-size: 120%;
+  }
+
+
+
