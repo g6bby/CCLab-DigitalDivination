@@ -11,7 +11,7 @@ body {
 	font-size: 130%;
   }
   p{
-	font-size: 110%;
+	font-size: 200%;
   }
   
   a:link {
@@ -58,4 +58,8 @@ body {
   }
   .tweet{
 	  background-color: RGB(255, 20, 100);
+  }
+
+  .emotion{
+	font-size: 200%
   }

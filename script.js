@@ -53,19 +53,24 @@ function randomSong(){
   })
     event.preventDefault();
   var check = document.getElementById("choice").value;
-  var check2 = document.getElementById("choice").value;
 
       //var val1 = "angry";
       //check will be true or false
-      if (check === "angry")
+      if (check === "angry" || check === "mad")
       { 
 
         songID = "466995"
       }
-      else if (check2 === "happy"){
+      else if (check === "happy")
+      {
 
 
         songID = "57158";
+      }
+      if (check === "sad")
+      {
+
+        songID = "7399698" 
       }
 
   xhr.open("GET", APISong+songID+accessToken, false);
@@ -81,7 +86,7 @@ function randomSong(){
   
   json = JSON.parse(demo);
   song = json['response']['song'];
-  document.getElementById("songImage").innerHTML = "<img src=\""+song['song_art_image_url']+"\"alt=\"Some Awesome Album Art\" style=\"width:200px;height:200px;\">";
+  document.getElementById("songImage").innerHTML = "<img src=\""+song['song_art_image_url']+"\"alt=\"Some Awesome Album Art\" style=\"width:300px;height:300px;\">";
   // I made these pixel values since I'd rather have overlap on a small screen than the image scaled too small 
  
 
@@ -96,20 +101,6 @@ function tweetSong(){
 
 }
 
-
-//specific songs
-function checkInput(){
-      var check = document.getElementById("choice").textContent = "angry";
-      //var val1 = "angry";
-      //check will be true or false
-      if (check)
-      { 
-        songID = "466995"
-      }
-      if (!check){
-        songID = "466996";
-      }
-    }
 
 //GETTING STARTED // 
 $(document).ready(function() {
