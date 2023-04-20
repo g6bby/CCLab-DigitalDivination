@@ -1,11 +1,11 @@
 body {
 	font-family: 'Hammersmith One', sans-serif;
-	background-color :RGB(205, 235, 230);
+	background-color :#ffc8c8;
   }
   h2 {
 	font-size: 200%;
-	background-color :RGB(153, 167, 238);
-	text-shadow: 2px 2px RGB(255, 255, 255);
+	background-color : #52a4ec;
+	text-shadow: 2px 2px #ff4961;
   }
   h3 {
 	font-size: 130%;

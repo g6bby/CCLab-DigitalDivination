@@ -72,6 +72,45 @@ function randomSong(){
 
         songID = "7399698" 
       }
+      if (check === "calm")
+      {
+
+        songID = "69336"
+      }
+      if (check === "excited")
+      {
+
+        songID = "3343"
+      }
+      if (check === "desperate")
+      {
+
+        songID = "5208409"
+      }
+      if (check === "regretful"){
+
+        songID = "8965212"
+      }
+      if (check === "rebel")
+      {
+
+        songID = "49011"
+      }
+      if (check === "groovy")
+      {
+
+        songID = "30290"
+      }
+
+      if(check === "nostalgic")
+      {
+
+        songID = "725791"
+      }
+      if(check === "revenge"){
+
+        songID = "102297"
+      }
 
   xhr.open("GET", APISong+songID+accessToken, false);
   xhr.send(); 
